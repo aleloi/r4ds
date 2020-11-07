@@ -522,7 +522,7 @@ This works because every geom has a default stat; and every stat has a default g
     
     ```{r}
     ggplot(data = diamonds) + 
-      geom_bar(mapping = aes(x = cut, y = stat(prop), group = 1))
+      geom_bar(mapping = aes(x = cut, y = after_stat(prop), group = 1))
     ```
 
     To find the variables computed by the stat, look for the help section
@@ -537,9 +537,9 @@ This works because every geom has a default stat; and every stat has a default g
     ggplot(data = diamonds) + 
       stat_summary(
         mapping = aes(x = cut, y = depth),
-        fun.min = min,
-        fun.max = max,
-        fun = median
+        fun.ymin = min,
+        fun.ymax = max,
+        fun.y = median
       )
     ```
     
